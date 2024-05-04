@@ -4,7 +4,6 @@ from matplotlib import pyplot as plt
 
 from Zero_Crossing_Rate import Calc_ZCR
 
-
 if __name__ == "__main__":
     wave_path = r"D:\Code\Tests\Audio\audio_data\jazz.wav"
     waveform, sample_rate = librosa.load(wave_path,sr=None)
