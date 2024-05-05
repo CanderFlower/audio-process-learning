@@ -36,7 +36,10 @@ The database used in the projects is not included to avoid copyright issues.
     - Note4: With ploting the history, it can be known that too much epochs does not improve the performance.
   - Music Genre Classification based on CNN
     - Note1: CNN performs much better than simply MLP, since CNN can learn the relationships and features from spectrum.
-    - Note2: Under the same condition, just using MFCC has an accuracy of 75.35%, while using MFCC_delta2 as 3 channels has an accuracy of 75.51%, indicating there is still no significant difference between them.
+    - Note2: Under the same condition(100 epochs), just using MFCC has an accuracy of 75.35%, while using MFCC_delta2 as 3 channels has an accuracy of 75.51%, indicating there is still no significant difference between them. When using 200 epochs for MFCC_delta2(also changed learning_rate, dropout and regularizer), the accuracy will only become 75.83%, and the history plot shows that the accuracy will not change significantly after about the 90-th epoch.
+  - Music Genre Classification based on RNN-LSTM
+    - Note1: Pay attention to the input shapes for different models. LSTM requires 2-dimensional data (for each input), while CNN requires 3-dimensional data since it has an extra dimension for channels (which will not be used for MFCC).
+    - Note2: RNN-LSTM has an accuracy of 67.75% (after 150 eopchs), which is lower than CNN. It may can be improved through some ways like add the number of cells.
 
 
 ## References

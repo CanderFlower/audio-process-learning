@@ -1,11 +1,10 @@
 import numpy as np
 import json
 import tensorflow as tf
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from genre_classify import load_data,save_history,plot_history
 
-DATA_PATH = r"D:\Code\Tests\Audio\Chap2\mfcc.json"
+DATA_PATH = r"D:\Code\Tests\Audio\Chap2\mfcc_delta2.json"
 MODEL_PATH = r"D:\Code\Tests\Audio\Chap2\model_cnn.h5"
 HISTORY_PATH = r"D:\Code\Tests\Audio\Chap2\history_cnn.json"
 
@@ -29,7 +28,7 @@ if __name__ == "__main__":
     print("Data Loaded.")
     
     #Reshape data for CNN
-    inputs = inputs[...,np.newaxis]
+    #inputs = inputs[...,np.newaxis]
     input_shape = (inputs.shape[1],inputs.shape[2],inputs.shape[3])
     
     #Split data
@@ -51,17 +50,19 @@ if __name__ == "__main__":
         model.add(tf.keras.layers.BatchNormalization())
         
     model.add(tf.keras.layers.Flatten())
-    model.add(tf.keras.layers.Dense(64,activation="relu",kernel_regularizer = tf.keras.regularizers.l2(0.001)))
-    model.add(tf.keras.layers.Dropout(0.4))
+    model.add(tf.keras.layers.Dense(128,activation="relu",kernel_regularizer = tf.keras.regularizers.l2(0.0012)))
+    model.add(tf.keras.layers.Dropout(0.45))
     
     model.add(tf.keras.layers.Dense(len(genres),activation="softmax"))
     print("Model built.")
     
     #Compile & Train Model
-    optimizer = tf.keras.optimizers.Adam(learning_rate=0.00008)
+    optimizer = tf.keras.optimizers.Adam(learning_rate=0.00006)
     model.compile(optimizer=optimizer,loss="sparse_categorical_crossentropy",metrics=["accuracy"])
     
-    history=model.fit(inputs_train,targets_train,validation_data=(inputs_validation,targets_validation),batch_size=32,epochs=100)
+    model.summary()
+    
+    history=model.fit(inputs_train,targets_train,validation_data=(inputs_validation,targets_validation),batch_size=32,epochs=200)
     print("Model trained.")
     
     #Evaluate Model
