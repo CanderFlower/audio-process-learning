@@ -41,9 +41,13 @@ The database used in the projects is not included to avoid copyright issues.
     - Note1: Pay attention to the input shapes for different models. LSTM requires 2-dimensional data (for each input), while CNN requires 3-dimensional data since it has an extra dimension for channels (which will not be used for MFCC).
     - Note2: RNN-LSTM has an accuracy of 67.75% (after 150 eopchs), which is lower than CNN. It may can be improved through some ways like add the number of cells.
 
+### Chapter 3
+- Sound Generation with Neural Networks
+  - AutoEncoder
 
 ## References
 
 - [音频信号处理及深度学习教程](https://space.bilibili.com/550180844/channel/collectiondetail?sid=1034039&ctype=0)
 - [Audio Signal Processing for Machine Learning](https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0)
 - [Deep Learning (for Audio) with Python](https://www.youtube.com/playlist?list=PL-wATfeyAMNrtbkCNsLcpoAyBBRJZVlnf)
+- [Generating Sound with Neural Networks](https://www.youtube.com/playlist?list=PL-wATfeyAMNpEyENTc-tVH5tfLGKtSWPp)
