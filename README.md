@@ -44,6 +44,7 @@ The database used in the projects is not included to avoid copyright issues.
 ### Chapter 3
 - Sound Generation with Neural Networks
   - AutoEncoder
+    - Note1: In the MNIST task, the autoencoder can reconstruct the primary features of the origin images.A 3D latent space works better than 2D, because similar figures will overlap with each other in 2d space, which will be resolved in 3d cases. However, there is no significant difference between them.
 
 ## References
 
