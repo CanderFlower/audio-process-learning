@@ -5,3 +5,4 @@
 /Chap2/*.json
 /Chap2/*.h5
 /Chap3/mnist_model
+/Chap3/mnist_model_vae

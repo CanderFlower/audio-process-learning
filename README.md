@@ -44,8 +44,12 @@ The database used in the projects is not included to avoid copyright issues.
 ### Chapter 3
 - Sound Generation with Neural Networks
   - AutoEncoder
-    - Note1: In the MNIST task, the autoencoder can reconstruct the primary features of the origin images.A 3D latent space works better than 2D, because similar figures will overlap with each other in 2d space, which will be resolved in 3d cases. However, there is no significant difference between them.
-
+    - Note: In the MNIST task, the autoencoder can reconstruct the primary features of the origin images.A 3D latent space works better than 2D, because similar figures will overlap with each other in 2d space, which will be resolved in 3d cases. However, there is no significant difference between them.
+  - Variational AutoEncoder
+    - Note1: When extending the class VAE from Autoencoder, pay close attention to the distinctions between AE and VAE. According to the abstraction principle, only override the bottleneck function.
+    - Note2: Be catious with numpy when implementing loss functions. Use functions in K instead.
+    - Note3: Load function should be override because we create VAE instead of Autoencoder. Tried to avoid this waste through using `subclass = globals()[cls.__name__]` (like reflection in Java) and failed.
+    - Note4: VAE does not perform significantly better than AE. The primary improvement is achieved by increasing the dimensionality of the latent space.
 ## References
 
 - [音频信号处理及深度学习教程](https://space.bilibili.com/550180844/channel/collectiondetail?sid=1034039&ctype=0)

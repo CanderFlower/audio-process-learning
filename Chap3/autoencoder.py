@@ -29,6 +29,9 @@ class Autoencoder:
        
        self.history = None
        
+    def _add_bottleneck(self, x):
+        return Dense(self.latent_space_dim, name="encoder_output")(x)
+       
     def _build_encoder(self):
         input = Input(shape=self.input_shape, name="encoder_input")
         self.input = input
@@ -38,7 +41,7 @@ class Autoencoder:
             x = BatchNormalization(name=f"encoder_bn_{i}")(x)
         self.shape_before_bottleneck = K.int_shape(x)[1:]
         x = Flatten()(x)
-        output = Dense(self.latent_space_dim, name="encoder_output")(x)
+        output = self._add_bottleneck(x)
         return Model(input, output, name="encoder")
     
     def _build_decoder(self):
