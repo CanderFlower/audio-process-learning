@@ -20,7 +20,7 @@ class VAE(Autoencoder):
                        conv_kernels,
                        conv_strides,
                        latent_space_dim)
-        self.reconstruct_loss_weight = 700
+        self.reconstruct_loss_weight = 1200000
     
     def _add_bottleneck(self, x):
         self.mu = Dense(self.latent_space_dim, name="mu")(x)
@@ -44,7 +44,6 @@ class VAE(Autoencoder):
         loss = self.vae_loss
         self.model.compile(optimizer=optimizer, loss=loss)
         
-     
     @classmethod
     def load(cls, path):
         path = os.path.join(os.path.dirname(os.path.abspath(__file__)), path)

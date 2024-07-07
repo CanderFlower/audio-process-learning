@@ -6,3 +6,7 @@
 /Chap2/*.h5
 /Chap3/mnist_model
 /Chap3/mnist_model_vae
+/Chap3/recordings
+/Chap3/recordings_feature
+/Chap3/speech_model_vae
+__pycache__/

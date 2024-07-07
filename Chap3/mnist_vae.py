@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from mnist import plot_latent_position_3d, plot_reconstructed_image
 
-BATCH_SIZE = 512
-EPOCHS = 50
+BATCH_SIZE = 128
+EPOCHS = 25
 MODEL_PATH = "mnist_model_vae"
 
 def plot_latent_position_2d(latent_presentation, y_test):
@@ -29,7 +29,6 @@ def test_model():
     selected_idx = np.random.choice(x_test.shape[0], 10)
     test_image = x_test[selected_idx]
     
-    
     latent_presentation, _ = autoencoder.predict(x_test)
     plot_latent_position_3d(latent_presentation, y_test)
     
@@ -38,7 +37,7 @@ def test_model():
     
 
 if __name__ == "__main__":
-    '''
+    
     (x_train, _), (_, _) = mnist.load_data()
     x_train = x_train.astype("float32") / 255
     x_train = x_train.reshape(x_train.shape + (1,))
@@ -54,5 +53,5 @@ if __name__ == "__main__":
     autoencoder.train(x_train, BATCH_SIZE, EPOCHS)
     autoencoder.save(MODEL_PATH)
     autoencoder.plot_history()
-    '''
+    
     test_model()

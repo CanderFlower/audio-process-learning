@@ -50,6 +50,10 @@ The database used in the projects is not included to avoid copyright issues.
     - Note2: Be catious with numpy when implementing loss functions. Use functions in K instead.
     - Note3: Load function should be override because we create VAE instead of Autoencoder. Tried to avoid this waste through using `subclass = globals()[cls.__name__]` (like reflection in Java) and failed.
     - Note4: VAE does not perform significantly better than AE. The primary improvement is achieved by increasing the dimensionality of the latent space.
+  - Speech reconstruction based on VAE
+    - Note1: Due to the higher complexity of audio data compared to images in MNIST, we should use the latent space with higher dimensions(in this case, 512) and a more complex network structure. Additionally, the reconstruction loss weight of VAE should be significantly larger(compared with the MNIST task), to improve the reconstruction performance.
+    - Note2: It can be very annoying to deal with the shape problem in stft and istft. In this task, I use griffinlim instead of istft, since the complex part of spectrogram is lost during preprocessing.
+    - Note3: While the generated spectrogram looks good, the generated audio does not. There might be an issue with reconstructing the audio from the generated spectrogram.
 ## References
 
 - [音频信号处理及深度学习教程](https://space.bilibili.com/550180844/channel/collectiondetail?sid=1034039&ctype=0)
